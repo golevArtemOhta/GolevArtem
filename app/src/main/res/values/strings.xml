@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Golev Artem</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="popular">Популярные</string>
+    <string name="favourites">Избранные</string>
+    <string name="text_example_Matrix">Матрица</string>
 </resources>
