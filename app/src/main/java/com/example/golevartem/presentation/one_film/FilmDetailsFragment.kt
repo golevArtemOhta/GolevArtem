@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import coil.load
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.data.model.FilmItem
 import com.example.golevartem.databinding.FragmentOneFilmBinding
 
 
-class FilmDetailsFragment() : Fragment(){
+class FilmDetailsFragment() : Fragment() {
 
     lateinit var binding: FragmentOneFilmBinding
     lateinit var oneFilmViewModel: FilmDetailsViewModel
@@ -28,7 +28,8 @@ class FilmDetailsFragment() : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        oneFilmViewModel = ViewModelProvider(requireActivity()).get(FilmDetailsViewModel::class.java)
+        oneFilmViewModel =
+            ViewModelProvider(requireActivity()).get(FilmDetailsViewModel::class.java)
         binding = FragmentOneFilmBinding.inflate(inflater)
         return binding.root
     }
@@ -45,51 +46,51 @@ class FilmDetailsFragment() : Fragment(){
         val filmInfo = bundle?.getParcelable<FilmItem>("film")
 
 
-            with(binding){
-                imageViewFullPoster.load("${filmInfo?.posterUrl}")
-                textViewName.text = filmInfo?.nameRu
-                textViewDescription.text = filmInfo?.description
+        with(binding) {
+            imageViewFullPoster.load("${filmInfo?.posterUrl}")
+            textViewName.text = filmInfo?.nameRu
+            textViewDescription.text = filmInfo?.description
 
-                val genries = filmInfo?.genres
-                var indexGenries = 0
-                var textGenries = ""
-                    if (textGenries != null) {
-                        if (genries != null) {
-                            for (item in genries) {
-                                if (indexGenries == (genries.size-1)){
-                                    textGenries +=
-                                        "${item.genre}"
-                                } else{
-                                    textGenries +=
-                                        "${item.genre}, "
-                                }
-                                indexGenries++
-                            }
+            val genries = filmInfo?.genres
+            var indexGenries = 0
+            var textGenries = ""
+            if (textGenries != null) {
+                if (genries != null) {
+                    for (item in genries) {
+                        if (indexGenries == (genries.size - 1)) {
+                            textGenries +=
+                                "${item.genre}"
+                        } else {
+                            textGenries +=
+                                "${item.genre}, "
                         }
-                    }
-
-
-                val countries = filmInfo?.countries
-                var indexCountries = 0
-                var textCountries = ""
-                if (textCountries != null) {
-                    if (countries != null) {
-                        for (item in countries) {
-                            if (indexCountries == (countries.size-1)){
-                                textCountries +=
-                                    "${item.country}"
-                            } else{
-                                textCountries +=
-                                    "${item.country}, "
-                            }
-                            indexCountries++
-                        }
+                        indexGenries++
                     }
                 }
-
-                textViewGenre.text = textGenries
-                textViewCountry.text = textCountries
             }
+
+
+            val countries = filmInfo?.countries
+            var indexCountries = 0
+            var textCountries = ""
+            if (textCountries != null) {
+                if (countries != null) {
+                    for (item in countries) {
+                        if (indexCountries == (countries.size - 1)) {
+                            textCountries +=
+                                "${item.country}"
+                        } else {
+                            textCountries +=
+                                "${item.country}, "
+                        }
+                        indexCountries++
+                    }
+                }
+            }
+
+            textViewGenre.text = textGenries
+            textViewCountry.text = textCountries
+        }
 
 
     }

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.golevartem.R
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.data.model.FilmItem
 import com.example.golevartem.databinding.FilmItemBinding
 import com.example.golevartem.presentation.one_film.FilmDetailsFragment
 
@@ -31,10 +31,10 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmsHolder>() {
 
             if (filmsGenries != null) {
                 for (item in filmsGenries) {
-                    if (index == (filmsGenries.size-1)){
+                    if (index == (filmsGenries.size - 1)) {
                         genreOfFilmsToString +=
                             "${item.genre}"
-                    } else{
+                    } else {
                         genreOfFilmsToString +=
                             "${item.genre}, "
                     }

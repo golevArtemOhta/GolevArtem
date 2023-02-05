@@ -1,4 +1,6 @@
 package com.example.golevartem.data.model
 
-data class Error(val status_code: Int = 0,
-                 val status_message: String? = null)
+data class Error(
+    val status_code: Int = 0,
+    val status_message: String? = null
+)

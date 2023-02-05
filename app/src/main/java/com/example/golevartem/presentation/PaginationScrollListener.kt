@@ -1,9 +1,9 @@
-package com.example.golevartem
+package com.example.golevartem.presentation
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class PaginationScrollListener (
+class PaginationScrollListener(
     private val layoutManager: LinearLayoutManager,
     private val onScrolledEnd: () -> Unit
 ) :

@@ -1,10 +1,8 @@
-package com.example.golevartem.data
+package com.example.golevartem.data.model
 
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.golevartem.data.model.Country
-import com.example.golevartem.data.model.Genre
 import java.util.ArrayList
 
 data class FilmItem(
@@ -17,7 +15,7 @@ data class FilmItem(
     val shortDescription: String?,
     val genres: ArrayList<Genre>?,
     val countries: ArrayList<Country>?
-): Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readInt(),

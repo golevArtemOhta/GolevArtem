@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.data.model.FilmItem
 import com.example.golevartem.data.FilmRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -24,7 +24,7 @@ class FilmDetailsViewModel : ViewModel() {
             try {
                 val film = repository.getFilm(id)
                 itemFilm.postValue(film)
-            } catch (e: Throwable){
+            } catch (e: Throwable) {
                 Log.e("exeption", e.toString())
             }
         }

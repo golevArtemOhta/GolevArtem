@@ -1,6 +1,6 @@
 package com.example.golevartem.domain
 
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.data.model.FilmItem
 
 interface FilmRepository {
     suspend fun getFilms(page: Int): List<FilmItem>

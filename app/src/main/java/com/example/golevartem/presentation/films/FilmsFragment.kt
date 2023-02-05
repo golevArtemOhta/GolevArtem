@@ -11,10 +11,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.golevartem.PaginationScrollListener
-import com.example.golevartem.R
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.presentation.PaginationScrollListener
+import com.example.golevartem.data.model.FilmItem
 import com.example.golevartem.databinding.FragmentFilmsBinding
 
 
@@ -58,9 +56,7 @@ class FilmsFragment : Fragment() {
         binding.rvFilms.adapter = adapter
 
 
-
     }
-
 
 
     companion object {

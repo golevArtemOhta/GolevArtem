@@ -1,11 +1,10 @@
 package com.example.golevartem.presentation.films
 
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.data.model.FilmItem
 import com.example.golevartem.data.FilmRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -32,14 +31,14 @@ class FilmsViewModel : ViewModel() {
         job = viewModelScope.launch(Dispatchers.IO) {
             try {
                 val films = repository.getFilms(page)
-                if (films.isEmpty()){
+                if (films.isEmpty()) {
                     message.value = "These are all popular movies"
-                } else{
+                } else {
                     if (films.size < 20) isAllFilmsLoaded = true
                     itemsFilms.postValue(films)
                 }
                 page++
-            } catch (e: Throwable){
+            } catch (e: Throwable) {
                 Log.e("exeption", e.toString())
             }
 

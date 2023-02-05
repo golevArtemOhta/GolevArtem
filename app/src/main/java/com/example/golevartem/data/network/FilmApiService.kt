@@ -1,6 +1,6 @@
 package com.example.golevartem.data.network
 
-import com.example.golevartem.data.FilmItem
+import com.example.golevartem.data.model.FilmItem
 import com.example.golevartem.data.FilmsTop
 import retrofit2.http.GET
 import retrofit2.http.Headers

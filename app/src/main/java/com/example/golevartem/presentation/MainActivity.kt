@@ -1,8 +1,9 @@
-package com.example.golevartem
+package com.example.golevartem.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.golevartem.R
 import com.example.golevartem.databinding.ActivityMainBinding
 import com.example.golevartem.presentation.films.FilmsFragment
 
