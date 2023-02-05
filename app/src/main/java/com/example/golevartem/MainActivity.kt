@@ -19,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
     private fun openFragment(fragment: Fragment, idHolder: Int) {
         supportFragmentManager
             .beginTransaction()

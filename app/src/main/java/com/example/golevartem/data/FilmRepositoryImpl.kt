@@ -26,8 +26,8 @@ object FilmRepositoryImpl: FilmRepository {
         return films.films
     }
 
-    override suspend fun getOneFilm(): FilmItem{
-        val film = api.getOneFilm(451)
+    override suspend fun getFilm(id: Int): FilmItem{
+        val film = api.getFilm(id)
         return film
     }
 

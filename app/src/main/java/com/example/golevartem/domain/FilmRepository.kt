@@ -5,5 +5,5 @@ import com.example.golevartem.data.FilmItem
 interface FilmRepository {
     suspend fun getFilms(page: Int): List<FilmItem>
 
-    suspend fun getOneFilm(): FilmItem
+    suspend fun getFilm(id: Int): FilmItem
 }

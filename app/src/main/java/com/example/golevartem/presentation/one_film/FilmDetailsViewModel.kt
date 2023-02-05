@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class OneFilmViewModel : ViewModel() {
+class FilmDetailsViewModel : ViewModel() {
 
     val itemFilm = MutableLiveData<FilmItem>()
     val message = MutableLiveData<String>()
@@ -18,11 +18,11 @@ class OneFilmViewModel : ViewModel() {
 
     private var job: Job? = null
 
-    fun requestOneFilm() {
+    fun requestOneFilm(id: Int) {
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                val film = repository.getOneFilm()
+                val film = repository.getFilm(id)
                 itemFilm.postValue(film)
             } catch (e: Throwable){
                 Log.e("exeption", e.toString())

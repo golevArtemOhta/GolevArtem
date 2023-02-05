@@ -58,6 +58,7 @@ class FilmsFragment : Fragment() {
         binding.rvFilms.adapter = adapter
 
 
+
     }
 
 

@@ -1,17 +1,17 @@
 package com.example.golevartem.presentation.films
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.golevartem.R
 import com.example.golevartem.data.FilmItem
 import com.example.golevartem.databinding.FilmItemBinding
-import com.example.golevartem.presentation.one_film.OneFilmFragment
+import com.example.golevartem.presentation.one_film.FilmDetailsFragment
 
 class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmsHolder>() {
     val filmsList = ArrayList<FilmItem>()
@@ -25,30 +25,36 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmsHolder>() {
             poster.load("${film.posterUrlPreview}")
             textViewName.text = film.nameRu
             val filmsGenries = film.genres
+            val kinopoiskId = film.kinopoiskId
             var genreOfFilmsToString = ""
             var index = 0
 
-            for (item in filmsGenries) {
-                if (index == (filmsGenries.size-1)){
-                    genreOfFilmsToString +=
-                        "${item.genre}"
-                } else{
-                    genreOfFilmsToString +=
-                        "${item.genre}, "
+            if (filmsGenries != null) {
+                for (item in filmsGenries) {
+                    if (index == (filmsGenries.size-1)){
+                        genreOfFilmsToString +=
+                            "${item.genre}"
+                    } else{
+                        genreOfFilmsToString +=
+                            "${item.genre}, "
+                    }
+                    index++
                 }
-                index++
             }
 
             textViewGenreAndYear.text = "$genreOfFilmsToString (${film.year})"
 
             itemView.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(p0: View?) {
-
+                    val oneFilmFragmentCreate = FilmDetailsFragment.newInstance()
                     val activity = p0?.getContext() as AppCompatActivity
-                    activity.supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragment, OneFilmFragment.newInstance()).addToBackStack(null)
-                        .commit()
+                    val bundle = Bundle()
+                    bundle.putParcelable("film", film)
+                    oneFilmFragmentCreate.arguments = bundle
 
+                    activity.supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment, oneFilmFragmentCreate).addToBackStack(null)
+                        .commit()
                 }
             })
 
@@ -73,5 +79,9 @@ class FilmAdapter : RecyclerView.Adapter<FilmAdapter.FilmsHolder>() {
         //filmsList.clear()
         filmsList.addAll(films)
     }
+
+}
+
+private fun Bundle.putParcelable(s: String, film: FilmItem) {
 
 }
