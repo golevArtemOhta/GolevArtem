@@ -5,6 +5,7 @@ import com.example.golevartem.data.model.Genre
 
 data class FilmItem(
     val nameRu: String,
+    val kinopoiskId: Int,
     val posterUrl: String,
     val posterUrlPreview: String,
     val year: Int,

@@ -3,5 +3,7 @@ package com.example.golevartem.domain
 import com.example.golevartem.data.FilmItem
 
 interface FilmRepository {
-    suspend fun getFilms(): List<FilmItem>
+    suspend fun getFilms(page: Int): List<FilmItem>
+
+    suspend fun getOneFilm(): FilmItem
 }
